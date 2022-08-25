@@ -53,15 +53,31 @@
         </StackPanel>-->
 
 
-        <StackPanel>
+        <!--<StackPanel>
             <Label FontSize="26" >Model</Label>
             <TextBlock Text="{Binding MyCar.Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontSize="26" ></TextBlock>
             <Label FontSize="26" >Vendor</Label>
             <TextBlock Text="{Binding MyCar.Vendor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontSize="26" ></TextBlock>
             <Label FontSize="26" >Year</Label>
             <TextBlock Text="{Binding MyCar.Year,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontSize="26" ></TextBlock>
+        </StackPanel>-->
+
+
+        <StackPanel>
+            
+        <ListBox SelectionChanged="ListBox_SelectionChanged"  Name="listbox" ItemsSource="{Binding Cars}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="200" Margin="10" FontSize="25"  Text="{Binding Model}" ></TextBlock>
+                        <TextBlock Width="200" Margin="10" FontSize="25"  Text="{Binding Vendor}" ></TextBlock>
+                        <Button Margin="10" Background="Aqua" Width="50" >Buy</Button>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+            <Button FontSize="26" Name="addBtn" Click="addBtn_Click" >Add</Button>
         </StackPanel>
-        
         
         
     </Grid>

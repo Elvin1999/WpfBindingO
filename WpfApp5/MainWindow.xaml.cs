@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -35,7 +36,10 @@ namespace WpfApp5
         }
 
 
-  
+
+        public ObservableCollection<Car> Cars { get; set; }
+
+
 
 
 
@@ -63,6 +67,30 @@ namespace WpfApp5
                 Vendor = "Maserati",
                 Year = 2020
             };
+
+
+            Cars = new ObservableCollection<Car>
+            {
+                new Car
+                {
+                    Model="Cruze",
+                    Vendor="Chevrolet",
+                    Year=2015
+                },
+                new Car
+                {
+                    Model="CLS",
+                    Vendor="Mercedes",
+                    Year=2015
+                },
+                new Car
+                {
+                    Model="Malibu",
+                    Vendor="Chevrolet",
+                    Year=2020
+                }
+            };
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -85,6 +113,29 @@ namespace WpfApp5
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             SomeText = "Clicked";
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //var infoWindow = new InfoWindow();
+            //infoWindow.InfoCar = listbox.SelectedItem as Car;
+            //infoWindow.ShowDialog();
+
+
+            var infoWindow = new InfoWindow();
+            infoWindow.Car = listbox.SelectedItem as Car;
+            infoWindow.ShowDialog();
+        }
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var newCar = new Car
+            {
+                Model = "2107",
+                Vendor = "VAZ",
+                Year = 2011
+            };
+            Cars.Add(newCar);
         }
     }
 }
